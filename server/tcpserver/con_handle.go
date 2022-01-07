@@ -19,6 +19,7 @@ func HandleConnection(c net.Conn) {
 		}
 
 		temp := strings.TrimSpace(string(netData))
+		println(temp)
 		if temp == helpers.Password {
 			c.Write([]byte(string("success")))
 			print(strings.Split(c.RemoteAddr().String(), ":")[0])
