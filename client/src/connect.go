@@ -16,7 +16,6 @@ func Connect(host, password string) {
 
 	c.Write([]byte(password + "\n"))
 	message, _ := bufio.NewReader(c).ReadString('\n')
-	print(message)
 	if message == "success" {
 		println("Successful authentication!")
 	} else {
