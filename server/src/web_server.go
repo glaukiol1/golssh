@@ -11,7 +11,7 @@ var password = "PASSWORD"
 
 var pass_hash, _ = helpers.HashPassword(password)
 
-func hello(w http.ResponseWriter, req *http.Request) {
+func auth(w http.ResponseWriter, req *http.Request) {
 	w.Header().Add("Content-Type", "text/plain")
 	if helpers.CheckPasswordHash(req.URL.Query().Get("password"), pass_hash) {
 		fmt.Fprintf(w, "success")
@@ -22,6 +22,6 @@ func hello(w http.ResponseWriter, req *http.Request) {
 
 func StartWebServer() {
 
-	http.HandleFunc("/hello", hello)
+	http.HandleFunc("/auth", auth)
 	http.ListenAndServe(":22", nil)
 }
