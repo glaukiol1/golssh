@@ -3,8 +3,6 @@ package helpers
 import (
 	"os"
 	"os/exec"
-	"os/signal"
-	"syscall"
 )
 
 func Shell(host string) {
@@ -14,8 +12,6 @@ func Shell(host string) {
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		cmd.Stdin = os.Stdin
-		c := make(chan os.Signal)
-		signal.Notify(c, os.Interrupt, syscall.SIGTERM)
 		cmd.Run()
 	}
 
